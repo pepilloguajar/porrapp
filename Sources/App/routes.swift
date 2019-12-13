@@ -17,4 +17,20 @@ public func routes(_ router: Router) throws {
     router.get("todos", use: todoController.index)
     router.post("todos", use: todoController.create)
     router.delete("todos", Todo.parameter, use: todoController.delete)
+	
+	
+	
+    let userController = UserController()
+    
+    // GET /users
+    router.get("users", use: userController.list)
+    
+    // POST /users
+    router.post("users", use: userController.create)
+    
+    // PATCH /users/$id
+    router.patch("users", User.parameter, use: userController.update)
+    
+    // DELETE /users/$id
+    router.delete("users", User.parameter, use: userController.delete) 
 }
